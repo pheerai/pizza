@@ -1,0 +1,32 @@
+#!/bin/bash
+
+help() {
+    echo "pizza - sent small ASCII-Icons by Mail"
+    echo "--------------------------------------"
+    echo "Usage:  -p | --pizza   Sent a pizza"
+    echo "        -l | --love    Sent a heart"
+    echo "        -h | --help    Print this help-message"
+}
+
+if [ ! "$2" ]; then
+    mail -s "$(whoami) sent you a Pizza on srv.r.f3l.de!" $1 < /usr/local/share/pizza/pizza.txt
+    exit 0
+else
+    case "$1" in
+        "-p" | "--pizza")
+            mail -s "$(whoami) sent you a Pizza on srv.r.f3l.de" $2 < /usr/local/share/pizza/pizza.txt
+            ;;
+        "-l" | "--heart")
+            mail -s "$(whoami) sent you a Heart on srv.r.f3l.de" $2 < /usr/local/share/pizza/heart.txt
+            ;;
+        "-h" | "--help")
+            help
+            ;;
+        *)
+            echo "Unknown Argument!"
+            help
+            exit 100
+            ;;
+    esac
+fi
+exit 0
