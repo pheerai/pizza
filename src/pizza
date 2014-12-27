@@ -21,7 +21,7 @@ else
             mail -s "${PIZZAUSER} sent you a Pizza on ${PIZZAHOST}" $2 < "${PIZZAINC}/pizza"
             ;;
         "-l" | "--heart")
-            mail -s "${PIZZAUSER} sent you a Heart on ${PIZZAHOST}" $2 < "${PIZZAINC}/heart.txt"
+            mail -s "${PIZZAUSER} sent you a Heart on ${PIZZAHOST}" $2 < "${PIZZAINC}/heart"
             ;;
         "-h" | "--help")
             help
