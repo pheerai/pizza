@@ -3,6 +3,8 @@
 : ${PIZZAINC:="/usr/local/share/pizza"}
 PIZZAHOST=$(hostname -f)
 PIZZAUSER=$(whoami)
+PIZZAART=
+PIZZARCV=
 
 help() {
     echo "pizza - sent small ASCII-Icons by Mail"
@@ -12,25 +14,30 @@ help() {
     echo "        -h | --help    Print this help-message"
 }
 
-if [ ! "$2" ]; then
-    mail -s "${PIZZAUSER} sent you a Pizza on ${PIZZAHOST}!" $1 < "${PIZZAINC}/pizza"
-    exit 0
-else
-    case "$1" in
-        "-p" | "--pizza")
-            mail -s "${PIZZAUSER} sent you a Pizza on ${PIZZAHOST}" $2 < "${PIZZAINC}/pizza"
-            ;;
-        "-l" | "--heart")
-            mail -s "${PIZZAUSER} sent you a Heart on ${PIZZAHOST}" $2 < "${PIZZAINC}/heart"
-            ;;
-        "-h" | "--help")
-            help
-            ;;
-        *)
-            echo "Unknown Argument!"
-            help
-            exit 100
-            ;;
-    esac
-fi
+while getopts <argstring> ; do
+    <case>
+done
+
+
+# if [ ! "$2" ]; then
+#     mail -s "${PIZZAUSER} sent you a Pizza on ${PIZZAHOST}!" $1 < "${PIZZAINC}/pizza"
+#     exit 0
+# else
+#     case "$1" in
+#         "-p" | "--pizza")
+#             mail -s "${PIZZAUSER} sent you a Pizza on ${PIZZAHOST}" $2 < "${PIZZAINC}/pizza"
+#             ;;
+#         "-l" | "--heart")
+#             mail -s "${PIZZAUSER} sent you a Heart on ${PIZZAHOST}" $2 < "${PIZZAINC}/heart"
+#             ;;
+#         "-h" | "--help")
+#             help
+#             ;;
+#         *)
+#             echo "Unknown Argument!"
+#             help
+#             exit 100
+#             ;;
+#     esac
+# fi
 exit 0
