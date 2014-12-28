@@ -9,35 +9,47 @@ PIZZARCV=
 help() {
     echo "pizza - sent small ASCII-Icons by Mail"
     echo "--------------------------------------"
-    echo "Usage:  -p | --pizza   Sent a pizza"
-    echo "        -l | --love    Sent a heart"
-    echo "        -h | --help    Print this help-message"
+    echo "Usage:  -p         Sent a pizza (default)"
+    echo "        -l         Sent a heart"
+    echo "        -m <addr>  Receivers address non-optional)"
+    echo "        -h         Print this help-message"
 }
 
-while getopts <argstring> ; do
-    <case>
+if [ ! $1 ]; then
+    echo "Argument needed!"
+    help
+    exit 1
+fi
+
+while getopts "plhm:" opt; do
+    case ${opt} in
+	p )
+	    : ${PIZZAART:="pizza"}
+	    ;;
+	l )
+	    : ${PIZZAART:="heart"}
+	    ;;
+	m )
+	    PIZZARCV="${OPTARG}"
+	    ;;
+	h )
+	    help
+	    exit 0
+	    ;;
+	\?)
+	    help
+	    exit 1
+	    ;;
+    esac
 done
 
+: ${PIZZAART:="pizza"}
 
-# if [ ! "$2" ]; then
-#     mail -s "${PIZZAUSER} sent you a Pizza on ${PIZZAHOST}!" $1 < "${PIZZAINC}/pizza"
-#     exit 0
-# else
-#     case "$1" in
-#         "-p" | "--pizza")
-#             mail -s "${PIZZAUSER} sent you a Pizza on ${PIZZAHOST}" $2 < "${PIZZAINC}/pizza"
-#             ;;
-#         "-l" | "--heart")
-#             mail -s "${PIZZAUSER} sent you a Heart on ${PIZZAHOST}" $2 < "${PIZZAINC}/heart"
-#             ;;
-#         "-h" | "--help")
-#             help
-#             ;;
-#         *)
-#             echo "Unknown Argument!"
-#             help
-#             exit 100
-#             ;;
-#     esac
-# fi
+if [ ! $PIZZARCV ]; then
+    echo "Argument '-m' and mailaddress needed!"
+    help
+    exit 1
+fi
+
+mail -s "${PIZZAUSER} sent you a ${PIZZAART} on ${PIZZAHOST}!" ${PIZZARCV} < "${PIZZAINC}/${PIZZAART}"
 exit 0
