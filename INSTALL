@@ -1,6 +1,6 @@
 ==== Installing Pizza ====
 
-For Pizza to work, you need a running mailservice (either server, smarthost or local) using "mailx" from s-nail (provided by, i.e., heirloom-mailx in debian, s-nail in arch) . Install Pizza running the following commands as root after cd'ing into the git base directory:
+For Pizza to work, you need a running mailservice (either server, smarthost or local) using "mailx" from s-nail (provided by, i.e., heirloom-mailx in debian, s-nail in arch). Install Pizza by running "install.sh" from the base-dir, or the following commands as root after cd'ing into the git base directory:
 
 install -m 755 src/pizza /usr/local/bin/pizza
 mkdir -p /usr/local/share/pizza

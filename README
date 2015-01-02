@@ -2,9 +2,8 @@ Ever wanted to share a pizza (or else) to anyone who offers a service, for examp
 
 With PIZZA, you may now send pizza (or else) to any mailaddress out there!
 
-Usage: See INSTTALL for prerequisites.
+Usage: See INSTALL for prerequisites.
 
 To run "pizza" from the bare repository, cd into the src directory and run
 
 export PIZZAINC="../assets"; ./pizza
-
