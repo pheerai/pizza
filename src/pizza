@@ -10,8 +10,10 @@ PIZZASEND=
 help() {
     echo "pizza - sent small ASCII-Icons by Mail"
     echo "--------------------------------------"
-    echo "Usage:  -p         Sent a pizza (default)"
-    echo "        -l         Sent a heart"
+    echo "Usage:  -p         Send a pizza (default)"
+    echo "        -l         Send a heart"
+    echo "        -b         Send happy birthday"
+    echo "        -c         Send merry christmas"
     echo "        -m <addr>  Receivers address (non-optional)"
     echo "        -s <addr>  Senders address, defaults to user@host"
     echo "        -h         Print this help-message"
@@ -23,13 +25,19 @@ if [ ! $1 ]; then
     exit 1
 fi
 
-while getopts "plhm:s:" opt; do
+while getopts "plbchm:s:" opt; do
     case ${opt} in
 	p )
 	    : ${PIZZAART:="pizza"}
 	    ;;
 	l )
 	    : ${PIZZAART:="heart"}
+	    ;;
+    b )
+        : ${PIZZAART:="birthdaycake"}
+	    ;;
+	c )
+        : ${PIZZAART:="christmastree"}
 	    ;;
 	m )
 	    PIZZARCV="${OPTARG}"
