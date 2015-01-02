@@ -1,0 +1,9 @@
+==== Installing Pizza ====
+
+For Pizza to work, you need a running mailservice (either server, smarthost or local) using "mailx" from s-nail (provided by, i.e., heirloom-mailx in debian, s-nail in arch) . Install Pizza running the following commands as root after cd'ing into the git base directory:
+
+install -m 755 src/pizza /usr/local/bin/pizza
+mkdir -p /usr/local/share/pizza
+install -m 644 assets/pizza assets/heart /usr/local/share/pizza/
+
+If you want to use another directory than "/usr/local/share/pizza/" for the ASCII-Art-Pics, you have to set the "PIZZAINC"-Variable accordingly.
