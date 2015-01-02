@@ -5,13 +5,15 @@ PIZZAHOST=$(hostname -f)
 PIZZAUSER=$(whoami)
 PIZZAART=
 PIZZARCV=
+PIZZASEND=
 
 help() {
     echo "pizza - sent small ASCII-Icons by Mail"
     echo "--------------------------------------"
     echo "Usage:  -p         Sent a pizza (default)"
     echo "        -l         Sent a heart"
-    echo "        -m <addr>  Receivers address non-optional)"
+    echo "        -m <addr>  Receivers address (non-optional)"
+    echo "        -s <addr>  Senders address, defaults to user@host"
     echo "        -h         Print this help-message"
 }
 
@@ -21,7 +23,7 @@ if [ ! $1 ]; then
     exit 1
 fi
 
-while getopts "plhm:" opt; do
+while getopts "plhm:s:" opt; do
     case ${opt} in
 	p )
 	    : ${PIZZAART:="pizza"}
@@ -31,6 +33,9 @@ while getopts "plhm:" opt; do
 	    ;;
 	m )
 	    PIZZARCV="${OPTARG}"
+	    ;;
+	s )
+	    PIZZASEND="${OPTARG}"
 	    ;;
 	h )
 	    help
@@ -44,6 +49,7 @@ while getopts "plhm:" opt; do
 done
 
 : ${PIZZAART:="pizza"}
+: ${PIZZASEND:="${PIZZAUSER}@${PIZZAHOST}"}
 
 if [ ! $PIZZARCV ]; then
     echo "Argument '-m' and mailaddress needed!"
@@ -51,5 +57,5 @@ if [ ! $PIZZARCV ]; then
     exit 1
 fi
 
-mail -s "${PIZZAUSER} sent you a ${PIZZAART} on ${PIZZAHOST}!" ${PIZZARCV} < "${PIZZAINC}/${PIZZAART}"
+mail -s "${PIZZAUSER} sent you a ${PIZZAART} on ${PIZZAHOST}!" -S from=${PIZZASEND} ${PIZZARCV} < "${PIZZAINC}/${PIZZAART}"
 exit 0
