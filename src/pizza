@@ -28,35 +28,35 @@ fi
 
 while getopts "plbcnhm:s:" opt; do
     case ${opt} in
-    	p )
-    	    : ${PIZZAART:="pizza"}
-    	    ;;
-    	l )
-    	    : ${PIZZAART:="heart"}
-    	    ;;
-    	b )
-                : ${PIZZAART:="birthdaycake"}
-    	    ;;
-    	c )
-                : ${PIZZAART:="christmastree"}
-    	    ;;
-    	n )
-                : ${PIZZAART:="new_year"}
+        p )
+            : ${PIZZAART:="pizza"}
+            ;;
+        l )
+            : ${PIZZAART:="heart"}
+            ;;
+        b )
+            : ${PIZZAART:="birthdaycake"}
+            ;;
+        c )
+            : ${PIZZAART:="christmastree"}
+            ;;
+        n )
+            : ${PIZZAART:="new_year"}
             ;;
         m )
-    	    PIZZARCV="${OPTARG}"
-    	    ;;
-    	s )
-    	    PIZZASEND="${OPTARG}"
-    	    ;;
-    	h )
-    	    help
-    	    exit 0
-    	    ;;
-    	\?)
-    	    help
-    	    exit 1
-    	    ;;
+            PIZZARCV="${OPTARG}"
+            ;;
+        s )
+            PIZZASEND="${OPTARG}"
+            ;;
+        h )
+            help
+            exit 0
+            ;;
+        \?)
+            help
+            exit 1
+            ;;
     esac
 done
 
