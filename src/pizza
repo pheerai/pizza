@@ -14,6 +14,7 @@ help() {
     echo "        -l         Send a heart"
     echo "        -b         Send happy birthday"
     echo "        -c         Send merry christmas"
+    echo "        -n         Send a happy new year"
     echo "        -m <addr>  Receivers address (non-optional)"
     echo "        -s <addr>  Senders address, defaults to user@host"
     echo "        -h         Print this help-message"
@@ -25,7 +26,7 @@ if [ ! $1 ]; then
     exit 1
 fi
 
-while getopts "plbchm:s:" opt; do
+while getopts "plbcnhm:s:" opt; do
     case ${opt} in
 	p )
 	    : ${PIZZAART:="pizza"}
@@ -39,7 +40,10 @@ while getopts "plbchm:s:" opt; do
 	c )
             : ${PIZZAART:="christmastree"}
 	    ;;
-	m )
+	n )
+            : ${PIZZAART:="new_year"}
+        ;;
+    m )
 	    PIZZARCV="${OPTARG}"
 	    ;;
 	s )
