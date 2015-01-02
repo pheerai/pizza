@@ -8,61 +8,65 @@ PIZZARCV=
 PIZZASEND=
 
 help() {
-    echo "pizza - sent small ASCII-Icons by Mail"
-    echo "--------------------------------------"
-    echo "Usage:  -p         Send a pizza (default)"
-    echo "        -l         Send a heart"
-    echo "        -b         Send happy birthday"
-    echo "        -c         Send merry christmas"
-    echo "        -m <addr>  Receivers address (non-optional)"
-    echo "        -s <addr>  Senders address, defaults to user@host"
-    echo "        -h         Print this help-message"
+	echo "pizza - sent small ASCII-Icons by Mail"
+	echo "--------------------------------------"
+	echo "Usage:  -p         Send a pizza (default)"
+	echo "        -l         Send a heart"
+	echo "        -b         Send happy birthday"
+	echo "        -c         Send merry christmas"
+	echo "        -n         Send a happy new year"
+	echo "        -m <addr>  Receivers address (non-optional)"
+	echo "        -s <addr>  Senders address, defaults to user@host"
+	echo "        -h         Print this help-message"
 }
 
 if [ ! $1 ]; then
-    echo "Argument needed!"
-    help
-    exit 1
+	echo "Argument needed!"
+	help
+	exit 1
 fi
 
-while getopts "plbchm:s:" opt; do
-    case ${opt} in
-	p )
-	    : ${PIZZAART:="pizza"}
-	    ;;
-	l )
-	    : ${PIZZAART:="heart"}
-	    ;;
-	b )
-	    : ${PIZZAART:="birthdaycake"}
-	    ;;
-	c )
-	    : ${PIZZAART:="christmastree"}
-	    ;;
-	m )
-	    PIZZARCV="${OPTARG}"
-	    ;;
-	s )
-	    PIZZASEND="${OPTARG}"
-	    ;;
-	h )
-	    help
-	    exit 0
-	    ;;
-	\?)
-	    help
-	    exit 1
-	    ;;
-    esac
+while getopts "plbcnhm:s:" opt; do
+	case ${opt} in
+		p )
+			: ${PIZZAART:="pizza"}
+			;;
+		l )
+			: ${PIZZAART:="heart"}
+			;;
+		b )
+			: ${PIZZAART:="birthdaycake"}
+			;;
+		c )
+			: ${PIZZAART:="christmastree"}
+			;;
+		n )
+			: ${PIZZAART:="new_year"}
+			;;
+		m )
+			PIZZARCV="${OPTARG}"
+			;;
+		s )
+			PIZZASEND="${OPTARG}"
+			;;
+		h )
+			help
+			exit 0
+			;;
+		\?)
+			help
+			exit 1
+			;;
+	esac
 done
 
 : ${PIZZAART:="pizza"}
 : ${PIZZASEND:="${PIZZAUSER}@${PIZZAHOST}"}
 
 if [ ! $PIZZARCV ]; then
-    echo "Argument '-m' and mailaddress needed!"
-    help
-    exit 1
+	echo "Argument '-m' and mailaddress needed!"
+	help
+	exit 1
 fi
 
 mail -s "${PIZZAUSER} sent you a ${PIZZAART} on ${PIZZAHOST}!" -S from=${PIZZASEND} ${PIZZARCV} < "${PIZZAINC}/${PIZZAART}"
