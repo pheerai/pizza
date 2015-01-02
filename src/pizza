@@ -8,6 +8,7 @@ PIZZARCV=
 PIZZASEND=
 
 help() {
+<<<<<<< HEAD
 	echo "pizza - sent small ASCII-Icons by Mail"
 	echo "--------------------------------------"
 	echo "Usage:  -p         Send a pizza (default)"
