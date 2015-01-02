@@ -33,11 +33,11 @@ while getopts "plbchm:s:" opt; do
 	l )
 	    : ${PIZZAART:="heart"}
 	    ;;
-    b )
-        : ${PIZZAART:="birthdaycake"}
+	b )
+            : ${PIZZAART:="birthdaycake"}
 	    ;;
 	c )
-        : ${PIZZAART:="christmastree"}
+            : ${PIZZAART:="christmastree"}
 	    ;;
 	m )
 	    PIZZARCV="${OPTARG}"
