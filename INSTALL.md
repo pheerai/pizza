@@ -2,13 +2,13 @@
 
 ## Prerequisites
 
-For Pizza to work, you need a running mailservice (either server, smarthost or local) using "mailx" from nail (provided by, i.e., heirloom-mailx in debian, s-nail in arch).
+For Pizza to work, you need a running mail service (either server, smarthost or local) using "mailx" from nail (provided by, i.e., heirloom-mailx in debian, s-nail in arch).
 
 ## Installation
 
 ### The simple way
 
-Install Pizza by running "install.sh" from the base-dir
+Install Pizza by running "install.sh" from the base-directory.
 
 ### The hard way
 

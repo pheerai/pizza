@@ -9,11 +9,11 @@ This is useful that others can keep track and no time is wasted in doing the sam
 
 ## Base your work onto the master-branch
 
-Master may be regarded as some kind of "Nightly"-Branch, so usally (though not always) it contains stable code that is going to get into release.
+Master may be regarded as some kind of "nightly"-branch, so usually (though not always) it contains stable code that is going to get into release.
 
 ## Commit FREQUENTLY and WELL-DOCUMENTED
 
-The tips from the [Pro-Git-Book][1] come in Handy here, as well as the [GitLab Flow page][2].
+The tips from the [Pro-Git-Book][1] come in handy here, as well as the [GitLab Flow page][2].
 Do things like rebase and stash only if you're absolutely sure what you're doing, and if the code exists nowhere but on your local repo!
 
 ## Early Merge-Requests
