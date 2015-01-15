@@ -6,7 +6,7 @@ PIZZAUSER=$(whoami)
 PIZZAART=
 PIZZARCV=
 PIZZASEND=
-PIZZAVERSION="v1.0.0"
+PIZZAVERSION="v1.0.1"
 
 help() {
 	echo "pizza - sent small ASCII-Icons by Mail"
