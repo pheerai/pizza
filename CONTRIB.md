@@ -19,5 +19,9 @@ Do things like rebase and stash only if you're absolutely sure what you're doing
 ## Early Merge-Requests
 If you think you're not completely done yet, or if you are stuck at some point: do a merge-request. Merge-Requests are discussions about work, no presentation for the result.
 
+## Versioning
+Versioning is done by pheerai when merging into release. It is done the following way: v<major>.<minor>.<bugfix>
+The steps needed for major-releases can be found in the roadmap, minor versions change when one of the major-features gets added before a master release.
+
 [1]: http://www.git-scm.com/book/en/v2
 [2]: https://about.gitlab.com/2014/09/29/gitlab-flow/
