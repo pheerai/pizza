@@ -6,6 +6,7 @@ PIZZAUSER=$(whoami)
 PIZZAART=
 PIZZARCV=
 PIZZASEND=
+PIZZAFILE=
 PIZZAVERSION="v1.0.1"
 
 help() {
@@ -64,6 +65,7 @@ done
 
 : ${PIZZAART:="pizza"}
 : ${PIZZASEND:="${PIZZAUSER}@${PIZZAHOST}"}
+PIZZAFILE="${PIZZAINC}/${PIZZAART}"
 
 if [ ! $PIZZARCV ]; then
 	echo "Argument '-m' and mailaddress needed!"
@@ -71,5 +73,17 @@ if [ ! $PIZZARCV ]; then
 	exit 1
 fi
 
-mail -s "${PIZZAUSER} sent you a ${PIZZAART} on ${PIZZAHOST}!" -S from=${PIZZASEND} ${PIZZARCV} < "${PIZZAINC}/${PIZZAART}"
+if [ ! -f "${PIZZAFILE}" ]; then
+	echo "ASCII-art file ${PIZZAFILE} not found!"
+	echo "You may need to set \$PIZZAINC (the ASCII-art directory)."
+	exit 1
+fi
+
+if [  ! -r "${PIZZAFILE}" ]; then
+	echo "ASCII-art file ${PIZZAFILE} not readable!"
+	echo "You may need to set the read rights correctly."
+	exit 1
+fi
+
+mail -s "${PIZZAUSER} sent you a ${PIZZAART} on ${PIZZAHOST}!" -S from=${PIZZASEND} ${PIZZARCV} < "${PIZZAFILE}"
 exit 0
