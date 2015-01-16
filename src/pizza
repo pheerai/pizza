@@ -7,7 +7,7 @@ PIZZAART=
 PIZZARCV=
 PIZZASEND=
 PIZZAFILE=
-PIZZAVERSION="v1.0.1"
+PIZZAVERSION="v1.0.2"
 
 help() {
 	echo "pizza - sent small ASCII-Icons by Mail"
