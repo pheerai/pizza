@@ -9,6 +9,8 @@ For Pizza to work, you need a running mail service (either server, smarthost or 
 ### The simple way
 
 Install Pizza by running "install.sh" from the base-directory.
+install.sh takes two arguments: PREFIX (defaults to "/usr/local/") and
+INCPREFIX (defaults to "$PREFIX/share"). To set INCPREFIX, passing PREFIX beforehands is mandatory!
 
 ### The hard way
 
