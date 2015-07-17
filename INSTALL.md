@@ -9,8 +9,10 @@ For Pizza to work, you need a running mail service (either server, smarthost or 
 ### The simple way
 
 Install Pizza by running "install.sh" from the base-directory.
-install.sh takes two arguments: PREFIX (defaults to "/usr/local/") and
-INCPREFIX (defaults to "$PREFIX/share"). To set INCPREFIX, passing PREFIX beforehands is mandatory!
+install.sh takes two arguments: a prefix (the path where to place the executable parts; defaults to "/usr/local/") and
+an incprefix (the path where to place the message contents/ASCII-images; defaults to "<prefix>/share").
+To set incprefix, passing prefix beforehands is mandatory!
+You may also pass the environement variables "$PATH" and "$INCPATH", even though given arguments take precedence.
 
 ### The hard way
 
